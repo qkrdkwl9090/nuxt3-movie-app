@@ -1,0 +1,3 @@
+<template>
+  <LayoutXl></LayoutXl>
+</template>
