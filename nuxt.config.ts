@@ -15,4 +15,9 @@ export default defineNuxtConfig({
   build: {
     transpile: ['primevue'],
   },
+  runtimeConfig: {
+    public: {
+      apiBase: 'https://yts.mx/api',
+    },
+  },
 })
