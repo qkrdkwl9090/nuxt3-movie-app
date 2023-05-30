@@ -8,9 +8,10 @@ export default defineNuxtConfig({
   css: [
     '@/assets/styles/fonts.scss',
     '@/assets/styles/components.scss',
-    '@/assets/styles/fonts.scss',
+    '@/assets/styles/main.css',
     'primevue/resources/themes/lara-light-blue/theme.css',
     'primevue/resources/primevue.css',
+    'primeicons/primeicons.css',
   ],
   build: {
     transpile: ['primevue'],
