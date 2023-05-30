@@ -39,6 +39,9 @@ devDependencies:
   nuxt:
     specifier: ^3.4.3
     version: 3.4.3(@types/node@18.0.0)(eslint@8.40.0)(sass@1.62.1)(stylelint@15.6.2)(typescript@5.0.4)
+  nuxt-lodash:
+    specifier: ^2.4.1
+    version: 2.4.1
   postcss:
     specifier: ^8.4.23
     version: 8.4.23
@@ -1088,6 +1091,16 @@ packages:
 
   /@types/json-schema@7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
+    dev: true
+
+  /@types/lodash-es@4.17.7:
+    resolution: {integrity: sha512-z0ptr6UI10VlU6l5MYhGwS4mC8DZyYer2mCoyysZtSF7p26zOX8UpbrV0YpNYLGS8K4PUFIyEr62IMFFjveSiQ==}
+    dependencies:
+      '@types/lodash': 4.14.195
+    dev: true
+
+  /@types/lodash@4.14.195:
+    resolution: {integrity: sha512-Hwx9EUgdwf2GLarOjQp5ZH8ZmblzcbTBC2wtQWNKARBSxM9ezRIAUpeDTgoQRAFB0+8CNWXVA9+MaSOzOF3nPg==}
     dev: true
 
   /@types/minimist@1.2.2:
@@ -3687,6 +3700,10 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /lodash-es@4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: true
+
   /lodash._reinterpolate@3.0.0:
     resolution: {integrity: sha512-xYHt68QRoYGjeeM/XOE1uJtvXQAgvszfBhjV4yvsQH0u2i9I6cI6c6/eG4Hh3UAOVn0y/xAXwmTzEay49Q//HA==}
     dev: true
@@ -4224,6 +4241,17 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /nuxt-lodash@2.4.1:
+    resolution: {integrity: sha512-Z1c2eBApJsP4m3RMnZWGDYQ7GiNCrWuLH1PGpLe/7OihjOOtWUN+0sf6NQ9STvUbL4TpXisJ/4hKVns7+wkh4Q==}
+    dependencies:
+      '@nuxt/kit': 3.4.3
+      '@types/lodash-es': 4.17.7
+      lodash-es: 4.17.21
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
     dev: true
 
   /nuxt@3.4.3(@types/node@18.0.0)(eslint@8.40.0)(sass@1.62.1)(stylelint@15.6.2)(typescript@5.0.4):

@@ -5,6 +5,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  modules: ['nuxt-lodash'],
   css: [
     '@/assets/styles/fonts.scss',
     '@/assets/styles/components.scss',
