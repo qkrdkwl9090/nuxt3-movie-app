@@ -20,7 +20,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBase: 'https://yts.mx/api',
+      baseUrl: 'https://yts.mx/api',
     },
   },
 })
