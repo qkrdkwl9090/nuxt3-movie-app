@@ -1,9 +1,8 @@
 <script setup>
 const currentScroll = ref(0)
 const isScrolling = computed(() => currentScroll.value > 0)
-let container = document.querySelector('.main__container > main')
 const scrollEvent = useThrottle(() => {
-  currentScroll.value = container.scrollTop
+  currentScroll.value = window.scrollY
 }, 100)
 onMounted(() => {
   document.addEventListener('scroll', scrollEvent)
