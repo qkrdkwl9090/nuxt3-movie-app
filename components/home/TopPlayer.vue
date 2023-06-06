@@ -18,7 +18,7 @@ const src = computed(
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     >
     </iframe>
-    <div class="absolute bottom-28 left-28">
+    <div class="absolute bottom-16 left-16">
       <p class="text-white font-bold text-4xl mb-5">{{ movie.title }}</p>
       <Button class="w-[8.125rem]" label="상세 정보" severity="secondary" />
     </div>

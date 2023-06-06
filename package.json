@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@tanstack/vue-query": "^4.29.11",
+    "nuxt-swiper": "^1.1.0",
     "primeicons": "^6.0.1",
     "primevue": "^3.29.1"
   }

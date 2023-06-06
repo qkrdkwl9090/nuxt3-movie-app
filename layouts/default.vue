@@ -5,7 +5,7 @@ import ScrollTop from 'primevue/scrolltop'
 <template>
   <div class="main__container overflow-x-hidden shrink-0">
     <Header />
-    <main><slot /></main>
+    <main class="bg-black"><slot /></main>
     <ScrollTop target="parent" />
   </div>
 </template>

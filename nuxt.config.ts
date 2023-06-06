@@ -6,7 +6,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ['nuxt-lodash'],
+  modules: ['nuxt-lodash', 'nuxt-swiper'],
   css: [
     '@/assets/styles/fonts.scss',
     '@/assets/styles/components.scss',
@@ -15,6 +15,9 @@ export default defineNuxtConfig({
     'primevue/resources/primevue.css',
     'primeicons/primeicons.css',
   ],
+  swiper: {
+    modules: ['scrollbar'],
+  },
   build: {
     transpile: ['primevue'],
   },
