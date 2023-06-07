@@ -6,7 +6,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ['nuxt-lodash', 'nuxt-swiper'],
+  modules: ['nuxt-lodash', 'nuxt-swiper', '@pinia/nuxt'],
   css: [
     '@/assets/styles/fonts.scss',
     '@/assets/styles/components.scss',
