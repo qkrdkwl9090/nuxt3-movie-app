@@ -38,10 +38,10 @@ const { data: movies, isSuccess } = useQuery({
 <template>
   <section>
     <HomeTopPlayer v-if="isSuccess" :movie="movies[0]" />
-    <Skeleton v-else height="43.75rem" />
-    <section class="mt-16 pb-16 px-16">
+    <section class="pt-16 pb-16 px-16">
       <HomeMovieList v-if="isSuccess" :movieList="moviesByGenre" />
       <HomeMovieListEmpty v-else />
     </section>
+    <MovieDetail />
   </section>
 </template>

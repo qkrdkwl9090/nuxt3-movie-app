@@ -6,6 +6,7 @@ const props = defineProps({
     required: true,
   },
 })
+const movieDetail = useMovieDetail()
 </script>
 <template>
   <section>
@@ -24,7 +25,12 @@ const props = defineProps({
           hide: true,
         }"
       >
-        <swiper-slide v-for="movie of movies" :key="movie.id">
+        <swiper-slide
+          v-for="movie of movies"
+          :key="movie.id"
+          class="cursor-pointer"
+          @click="() => movieDetail.show(movie.id)"
+        >
           <img
             :src="movie.medium_cover_image"
             alt=""

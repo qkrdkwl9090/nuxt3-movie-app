@@ -1,0 +1,11 @@
+.p-dialog {
+  .p-dialog-header {
+    @apply p-0 bg-[#181818];
+  }
+  .p-dialog-content {
+    @apply bg-[#181818];
+  }
+}
+.p-tag {
+  @apply bg-slate-700;
+}

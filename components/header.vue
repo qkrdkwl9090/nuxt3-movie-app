@@ -18,7 +18,10 @@ onBeforeUnmount(() => {
   >
     <section class="py-4 flex items-center justify-between px-6 xl:px-8">
       <div class="flex items-center">
-        <p class="mr-6 font-bold text-2xl text-red-600 cursor-pointer">
+        <p
+          class="mr-6 font-bold text-2xl text-red-600 cursor-pointer"
+          @click="() => navigateTo('/')"
+        >
           Reelify
         </p>
       </div>
