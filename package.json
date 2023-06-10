@@ -6,7 +6,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "deploy": "gh-pages -d .output/public -t true"
   },
   "devDependencies": {
     "@types/node": "^18",
@@ -17,6 +18,7 @@
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.12.0",
+    "gh-pages": "^5.0.0",
     "nuxt": "^3.4.3",
     "nuxt-lodash": "^2.4.1",
     "postcss": "^8.4.23",

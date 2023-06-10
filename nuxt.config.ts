@@ -1,4 +1,7 @@
 export default defineNuxtConfig({
+  app: {
+    baseURL: '/nuxt3_movie_app/',
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
