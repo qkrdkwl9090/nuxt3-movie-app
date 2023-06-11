@@ -19,6 +19,7 @@ const { data: movies, isSuccess } = useQuery({
     >
       <div
         v-for="movie of movies"
+        class="w-[13.75rem]"
         :key="movie.id"
         @click="() => movieDetail.show(movie.id)"
       >
