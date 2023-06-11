@@ -28,7 +28,7 @@ watch(
 )
 const src = computed(
   () =>
-    `https://www.youtube.com/embed/${movie?.yt_trailer_code}?controls=0&showinfo=0&disablekb=1&fs=1&modestbranding=1`,
+    `https://www.youtube.com/embed/${movie?.value.yt_trailer_code}?controls=0&showinfo=0&disablekb=1&fs=1&modestbranding=1`,
 )
 </script>
 <template>
