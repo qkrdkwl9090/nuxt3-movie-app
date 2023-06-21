@@ -29,7 +29,7 @@ const getMovieList = async () =>
 
 const {
   data: movies,
-  isFetched,
+  isFetching,
   refetch,
 } = useQuery({
   queryKey: [requestUri],
@@ -80,11 +80,11 @@ const onInput = () => {
     </template>
 
     <section class="p-2">
-      <Skeleton v-if="!isFetched && !value" width="300" />
+      <Skeleton v-if="isFetching" width="300" />
       <div v-else>
         <h3 class="font-bold text-lg">Result</h3>
         <section class="mt-2">
-          <p v-if="!movies.length">Not found</p>
+          <p v-if="!movies?.length">Not found</p>
           <div v-else class="flex gap-8 flex-wrap">
             <div
               v-for="movie of movies"
