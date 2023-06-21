@@ -1,3 +1,17 @@
+body {
+  & {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+*:focus {
+  box-shadow: none !important;
+}
+
 .p-dialog {
   .p-dialog-header {
     @apply p-0 bg-[#181818];
@@ -8,4 +22,28 @@
 }
 .p-tag {
   @apply bg-slate-700;
+}
+.p-sidebar {
+  width: 100vw;
+  overflow: overlay;
+  @apply bg-black;
+  .p-sidebar-header-content {
+    @apply w-full;
+  }
+  .p-sidebar-header {
+    @apply flex justify-between py-2 px-8;
+  }
+  .p-sidebar-content {
+    @apply h-auto;
+    & {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+.p-inputtext {
+  @apply w-full bg-black border-none text-white;
 }

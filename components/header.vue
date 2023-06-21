@@ -1,4 +1,11 @@
 <script setup>
+import { useQuery } from '@tanstack/vue-query'
+import Sidebar from 'primevue/sidebar'
+import InputText from 'primevue/inputtext'
+
+const movieDetail = useMovieDetail()
+const visible = ref(false)
+const value = ref('')
 const currentScroll = ref(0)
 const isScrolling = computed(() => currentScroll.value > 0)
 const scrollEvent = useThrottle(() => {
@@ -10,6 +17,27 @@ onMounted(() => {
 onBeforeUnmount(() => {
   container.removeEventListener('scroll', scrollEvent)
 })
+
+const requestUri = computed(
+  () =>
+    `/v2/list_movies.json?query_term=${value.value}&sort_by=rating&limit=20`,
+)
+const getMovieList = async () =>
+  await useDefaultFetch(requestUri.value).then((res) => {
+    return res.data.movies
+  })
+
+const {
+  data: movies,
+  isFetched,
+  refetch,
+} = useQuery({
+  queryKey: [requestUri],
+  queryFn: getMovieList,
+})
+const onInput = () => {
+  refetch()
+}
 </script>
 <template>
   <header
@@ -25,7 +53,59 @@ onBeforeUnmount(() => {
           Reelify
         </p>
       </div>
-      <i class="pi pi-search text-white"></i>
+      <i
+        class="pi pi-search text-white cursor-pointer"
+        @click="() => (visible = true)"
+      ></i>
     </section>
   </header>
+  <Sidebar v-model:visible="visible" position="full">
+    <template #header>
+      <section class="flex items-center">
+        <p
+          class="mr-6 font-bold text-2xl text-red-600 cursor-pointer"
+          @click="() => navigateTo('/')"
+        >
+          Reelify
+        </p>
+
+        <InputText
+          type="text"
+          v-model="value"
+          class="w-full"
+          @input="onInput"
+          placeholder=" Movie Title/IMDb Code, Actor Name/IMDb Code, Director Name/IMDb Code"
+        />
+      </section>
+    </template>
+
+    <section class="p-2">
+      <Skeleton v-if="!isFetched && !value" width="300" />
+      <div v-else>
+        <h3 class="font-bold text-lg">Result</h3>
+        <section class="mt-2">
+          <p v-if="!movies.length">Not found</p>
+          <div v-else class="flex gap-8 flex-wrap">
+            <div
+              v-for="movie of movies"
+              class="w-[13.75rem] cursor-pointer"
+              :key="movie.id"
+              @click="() => movieDetail.show(movie.id)"
+            >
+              <p
+                class="text-gray-300 mt-2 overflow-x-hidden text-ellipsis break-all whitespace-nowrap"
+              >
+                {{ movie.title }}
+              </p>
+              <img
+                class="rounded-md mt-2"
+                :src="movie.medium_cover_image"
+                :alt="movie.title"
+              />
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </Sidebar>
 </template>
