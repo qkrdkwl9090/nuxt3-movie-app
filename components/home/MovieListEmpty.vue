@@ -8,7 +8,14 @@
           :key="i"
           width="14.5rem"
           height="18.75rem"
-          class="block"
+          class="hidden xl:block"
+        />
+        <Skeleton
+          v-for="i of 4"
+          :key="i"
+          width="14.5rem"
+          height="18.75rem"
+          class="block xl:hidden"
         />
       </div>
     </div>

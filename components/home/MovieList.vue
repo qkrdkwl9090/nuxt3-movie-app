@@ -15,10 +15,18 @@ const movieDetail = useMovieDetail()
       :key="genre"
       class="text-white [&+&]:mt-4"
     >
-      <h3 class="text-2xl">{{ genre }}</h3>
+      <h3 class="text-2xl font-bold">{{ genre }}</h3>
       <swiper
         class="mt-4"
-        slidesPerView="7"
+        slidesPerView="4"
+        :breakpoints="{
+          1024: {
+            slidesPerView: 7,
+          },
+          640: {
+            slidesPerView: 4,
+          },
+        }"
         spaceBetween="30"
         :modules="[Scrollbar]"
         :scrollbar="{
@@ -28,13 +36,13 @@ const movieDetail = useMovieDetail()
         <swiper-slide
           v-for="movie of movies"
           :key="movie.id"
-          class="cursor-pointer"
+          class="cursor-pointer min-w-[40px] xl:min-w-[9.375rem]"
           @click="() => movieDetail.show(movie.id)"
         >
           <img
             :src="movie.medium_cover_image"
             alt=""
-            class="min-w-[9.375rem] rounded-md"
+            class="rounded-md w-full"
           />
           <p class="mt-2">{{ movie.title }}</p>
         </swiper-slide>
