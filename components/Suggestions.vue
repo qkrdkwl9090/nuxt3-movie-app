@@ -21,7 +21,7 @@ const { data: movies, isSuccess } = useQuery({
         v-for="movie of movies"
         class="w-[13.75rem]"
         :key="movie.id"
-        @click="() => movieDetail.show(movie.id)"
+        @click="() => movieDetail.change(movie.id)"
       >
         <img
           class="rounded-md"

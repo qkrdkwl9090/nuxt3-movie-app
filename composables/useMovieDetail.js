@@ -14,6 +14,9 @@ export const useMovieDetail = defineStore('movieDetail', {
       this._id = id
       this._visible = true
     },
+    change(id) {
+      this._id = id
+    },
     close() {
       this._id = null
       this._visible = false

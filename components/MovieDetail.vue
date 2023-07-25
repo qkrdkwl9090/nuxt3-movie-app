@@ -12,7 +12,8 @@ const getMovieDetail = async () =>
 const movieInfo = computed(() => (movieDetail.visible ? movie : {}))
 const {
   data: movie,
-  isSuccess,
+  isLoading,
+  isRefetching,
   refetch,
 } = useQuery({
   queryKey: [requestUri.value],
@@ -24,6 +25,15 @@ watch(
   (visible) => {
     if (!visible) return
     refetch()
+  },
+)
+watch(
+  () => movieDetail.id,
+  (id) => {
+    if (!id) return
+    refetch()
+    const content = document.querySelector('.p-dialog-content')
+    content && content.scroll(0, 0)
   },
 )
 const src = computed(
@@ -44,7 +54,7 @@ const src = computed(
   >
     <template #header>
       <iframe
-        v-if="movie?.yt_trailer_code"
+        v-if="movie?.yt_trailer_code && !isRefetching"
         :src="src"
         class="w-full h-[25rem] rounded-tl-md rounded-tr-md"
         frameborder="0"
@@ -61,7 +71,7 @@ const src = computed(
       </div>
     </template>
     <section class="p-10 text-white flex justify-between gap-8">
-      <template v-if="movie?.title">
+      <template v-if="!isLoading && !isRefetching">
         <div class="w-3/4">
           <h3 class="font-bold text-lg">
             {{ movie?.title }}
@@ -102,6 +112,6 @@ const src = computed(
         <Skeleton width="12.5rem" height="18.75rem" />
       </template>
     </section>
-    <Suggestions v-if="movie?.id" :id="movie?.id" />
+    <Suggestions v-if="movie?.id && !isRefetching" :id="movie?.id" />
   </Dialog>
 </template>
