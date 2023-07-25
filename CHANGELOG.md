@@ -1,5 +1,18 @@
 # 🚦 CHANGELOG
 
+## [1.2.1](https://github.com/qkrdkwl9090/nuxt3_movie_app/compare/v1.2.0...v1.2.1) (2023-07-25)
+
+
+### 🐛 Bug Fixes
+
+* **movie-search:** nullable result ([0996083](https://github.com/qkrdkwl9090/nuxt3_movie_app/commit/0996083bebf5dd110fa06995edf8f83bce335420))
+* **suggestions:** 영화 추천 클릭 시 상세가 바뀌지 않는 오류 수정 ([9a64c0a](https://github.com/qkrdkwl9090/nuxt3_movie_app/commit/9a64c0a79f7f8a58cc1fa7748df9fdc26e975a62))
+
+
+### ♻️ Refactor
+
+* **movielist:** breakpoints slidesPerView ([39d217e](https://github.com/qkrdkwl9090/nuxt3_movie_app/commit/39d217e8a810a64d4afba5342a1ed0627bbf37d8))
+
 ## [1.2.0](https://github.com/qkrdkwl9090/nuxt3_movie_app/compare/v1.1.0...v1.2.0) (2023-06-21)
 
 
