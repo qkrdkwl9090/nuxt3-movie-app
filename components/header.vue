@@ -46,28 +46,27 @@ const onInput = () => {
   >
     <section class="py-4 flex items-center justify-between px-6 xl:px-8">
       <div class="flex items-center">
-        <p
+        <NuxtLink
           class="mr-6 font-bold text-2xl text-red-600 cursor-pointer"
-          @click="() => navigateTo('/')"
+          to="/"
         >
           Reelify
-        </p>
+        </NuxtLink>
       </div>
-      <i
-        class="pi pi-search text-white cursor-pointer"
-        @click="() => (visible = true)"
-      ></i>
+      <button @click="() => (visible = true)">
+        <i class="pi pi-search text-white"></i>
+      </button>
     </section>
   </header>
   <Sidebar v-model:visible="visible" position="full">
     <template #header>
       <section class="flex items-center">
-        <p
+        <NuxtLink
           class="mr-6 font-bold text-2xl text-red-600 cursor-pointer"
-          @click="() => navigateTo('/')"
+          to="/"
         >
           Reelify
-        </p>
+        </NuxtLink>
 
         <InputText
           type="text"
@@ -86,14 +85,14 @@ const onInput = () => {
         <section class="mt-2">
           <p v-if="!movies?.length">Not found</p>
           <div v-else class="flex gap-8 flex-wrap">
-            <div
+            <button
               v-for="movie of movies"
               class="w-[13.75rem] cursor-pointer"
               :key="movie.id"
               @click="() => movieDetail.show(movie.id)"
             >
               <p
-                class="text-gray-300 mt-2 overflow-x-hidden text-ellipsis break-all whitespace-nowrap"
+                class="text-left text-gray-300 mt-2 overflow-x-hidden text-ellipsis break-all whitespace-nowrap"
               >
                 {{ movie.title }}
               </p>
@@ -102,7 +101,7 @@ const onInput = () => {
                 :src="movie.medium_cover_image"
                 :alt="movie.title"
               />
-            </div>
+            </button>
           </div>
         </section>
       </div>

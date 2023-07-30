@@ -17,7 +17,7 @@ const { data: movies, isSuccess } = useQuery({
     <div
       class="mt-4 flex flex-wrap gap-12 justify-between text-white cursor-pointer"
     >
-      <div
+      <button
         v-for="movie of movies"
         class="w-[13.75rem]"
         :key="movie.id"
@@ -28,8 +28,8 @@ const { data: movies, isSuccess } = useQuery({
           :src="movie.medium_cover_image"
           :alt="movie.title"
         />
-        <p class="mt-2">{{ movie.title }}</p>
-      </div>
+        <p class="mt-2 text-left">{{ movie.title }}</p>
+      </button>
     </div>
   </section>
 </template>

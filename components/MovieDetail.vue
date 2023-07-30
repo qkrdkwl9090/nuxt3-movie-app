@@ -61,14 +61,14 @@ const src = computed(
         allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       >
       </iframe>
-      <div
+      <button
         class="absolute top-6 right-6 bg-black w-8 h-8 rounded-full hover:bg-gray-500 flex items-center justify-center"
       >
         <i
           class="pi pi-times cursor-pointer text-white"
           @click="() => movieDetail.close()"
         />
-      </div>
+      </button>
     </template>
     <section class="p-10 text-white flex justify-between gap-8">
       <template v-if="!isLoading && !isRefetching">
