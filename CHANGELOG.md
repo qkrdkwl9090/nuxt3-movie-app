@@ -1,5 +1,12 @@
 # 🚦 CHANGELOG
 
+## [1.2.2](https://github.com/qkrdkwl9090/nuxt3_movie_app/compare/v1.2.1...v1.2.2) (2023-07-30)
+
+
+### ♻️ Refactor
+
+* **tag:** change click event tag ([6debd85](https://github.com/qkrdkwl9090/nuxt3_movie_app/commit/6debd85d763257784b66c8344a1e0171d7d41f42))
+
 ## [1.2.1](https://github.com/qkrdkwl9090/nuxt3_movie_app/compare/v1.2.0...v1.2.1) (2023-07-25)
 
 
