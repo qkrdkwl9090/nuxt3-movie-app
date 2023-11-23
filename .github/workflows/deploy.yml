@@ -1,26 +1,28 @@
-name: Release
+name: '[deploy] github page deploy'
+env:
+  MY_EMAIL: qkrdkwl9090@naver.com
+  MY_NAME: qkrdkwl9090
+  REPO_NAME: nuxt3_movie_app
 on:
+  workflow_dispatch:
   push:
-    branches: ['main']
+    branches: [deploy]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    timeout-minutes: 4
     strategy:
       matrix:
         node-version: [18.x]
-
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
-
       - name: Pnpm setup
         uses: pnpm/action-setup@v2
         with:
           version: 8
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -30,7 +32,14 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --prod --frozen-lockfile
-
+      - name: Generate
+        run: pnpm generate
+      - name: Github Page Deploy
+        run: >
+          git config --global user.email ${{ env.MY_EMAIL }} 
+            git config --global user.name ${{ env.MY_NAME }} 
+            git remote set-url origin https://${{ env.MY_NAME }}:${{ secrets.RELEASE_TOKEN }}@github.com/${{ env.MY_NAME }}/${{ env.REPO_NAME }}.git
+            pnpm run deploy
       - name: Semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
