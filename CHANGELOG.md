@@ -1,5 +1,12 @@
 # 🚦 CHANGELOG
 
+## [1.2.3](https://github.com/qkrdkwl9090/nuxt3_movie_app/compare/v1.2.2...v1.2.3) (2023-11-23)
+
+
+### 🐛 Bug Fixes
+
+* **home:** 유튜브 리소스가 없는 경우가 많아, 커버 이미지로 대체 ([b774a4f](https://github.com/qkrdkwl9090/nuxt3_movie_app/commit/b774a4fb9cc6005b9dc59f02f848eb47c6bb5837))
+
 ## [1.2.2](https://github.com/qkrdkwl9090/nuxt3_movie_app/compare/v1.2.1...v1.2.2) (2023-07-30)
 
 
