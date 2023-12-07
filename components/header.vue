@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/vue-query'
 import Sidebar from 'primevue/sidebar'
 import InputText from 'primevue/inputtext'
 
-const movieDetail = useMovieDetail()
 const visible = ref(false)
 const value = ref('')
 const currentScroll = ref(0)
@@ -89,7 +88,7 @@ const onInput = () => {
               v-for="movie of movies"
               class="w-[13.75rem] cursor-pointer"
               :key="movie.id"
-              @click="() => movieDetail.show(movie.id)"
+              @click="() => navigateTo(`/${movie.id}`)"
             >
               <p
                 class="text-left text-gray-300 mt-2 overflow-x-hidden text-ellipsis break-all whitespace-nowrap"

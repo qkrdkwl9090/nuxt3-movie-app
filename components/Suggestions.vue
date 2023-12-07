@@ -1,7 +1,6 @@
 <script setup>
 import { useQuery } from '@tanstack/vue-query'
 const { id } = defineProps(['id'])
-const movieDetail = useMovieDetail()
 const requestUri = `/v2/movie_suggestions.json?movie_id=${id}`
 const getMovieSuggestions = async () =>
   await useDefaultFetch(requestUri).then(({ data }) => data.movies)
@@ -17,11 +16,11 @@ const { data: movies, isSuccess } = useQuery({
     <div
       class="mt-4 flex flex-wrap gap-12 justify-between text-white cursor-pointer"
     >
-      <button
+      <NuxtLink
         v-for="movie of movies"
         class="w-[13.75rem]"
         :key="movie.id"
-        @click="() => movieDetail.change(movie.id)"
+        :href="`/${movie.id}`"
       >
         <img
           class="rounded-md"
@@ -29,7 +28,7 @@ const { data: movies, isSuccess } = useQuery({
           :alt="movie.title"
         />
         <p class="mt-2 text-left">{{ movie.title }}</p>
-      </button>
+      </NuxtLink>
     </div>
   </section>
 </template>

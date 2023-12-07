@@ -2,8 +2,6 @@
 const props = defineProps({
   movie: Object,
 })
-const movieDetail = useMovieDetail()
-const onClickDetail = () => movieDetail.show(props.movie.id)
 </script>
 <template>
   <div class="h-[43.75rem] overflow-hidden relative">
@@ -14,7 +12,7 @@ const onClickDetail = () => movieDetail.show(props.movie.id)
         class="w-[6.875rem]"
         label="Info"
         severity="secondary"
-        @click="onClickDetail"
+        @click="navigateTo(`/${props.movie.id}`)"
       />
     </div>
   </div>

@@ -6,7 +6,6 @@ const props = defineProps({
     required: true,
   },
 })
-const movieDetail = useMovieDetail()
 </script>
 <template>
   <section>
@@ -38,14 +37,14 @@ const movieDetail = useMovieDetail()
           :key="movie.id"
           class="cursor-pointer min-w-[40px] xl:min-w-[9.375rem]"
         >
-          <button @click="() => movieDetail.show(movie.id)">
+          <NuxtLink :href="`/${movie.id}`">
             <img
               :src="movie.medium_cover_image"
               alt=""
               class="rounded-md w-full"
             />
             <p class="mt-2 text-left">{{ movie.title }}</p>
-          </button>
+          </NuxtLink>
         </swiper-slide>
       </swiper>
     </div>
