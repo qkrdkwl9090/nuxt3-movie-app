@@ -42,6 +42,5 @@ const { data: movies, isSuccess } = useQuery({
       <HomeMovieList v-if="isSuccess" :movieList="moviesByGenre" />
       <HomeMovieListEmpty v-else />
     </section>
-    <MovieDetail />
   </section>
 </template>

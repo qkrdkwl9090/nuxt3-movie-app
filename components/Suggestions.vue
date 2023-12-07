@@ -11,19 +11,12 @@ const { data: movies, isSuccess } = useQuery({
 </script>
 
 <template>
-  <section class="p-10" v-if="isSuccess">
+  <section v-if="isSuccess">
     <h4 class="text-lg text-white font-bold">Suggestions</h4>
-    <div
-      class="mt-4 flex flex-wrap gap-12 justify-between text-white cursor-pointer"
-    >
-      <NuxtLink
-        v-for="movie of movies"
-        class="w-[13.75rem]"
-        :key="movie.id"
-        :href="`/${movie.id}`"
-      >
+    <div class="mt-4 grid grid-cols-2 xl:grid-cols-3 gap-12 text-white">
+      <NuxtLink v-for="movie of movies" :key="movie.id" :href="`/${movie.id}`">
         <img
-          class="rounded-md"
+          class="rounded-md w-full"
           :src="movie.medium_cover_image"
           :alt="movie.title"
         />
