@@ -1,12 +1,17 @@
-<script setup>
+<script setup lang="ts">
 import { useQuery } from '@tanstack/vue-query'
+import { IMovieResponse, IMovie } from '@/models/movie'
 import Tag from 'primevue/tag'
+
 const route = useRoute()
 const id = route.params.id
 
 const requestUri = computed(() => `/v2/movie_details.json?movie_id=${id}`)
-const getMovieDetail = async () =>
-  await useDefaultFetch(requestUri.value).then(({ data }) => data.movie)
+const getMovieDetail = async (): Promise<IMovie> => {
+  const response = await useDefaultFetch(requestUri.value)
+  const movieResponse: IMovieResponse = response as IMovieResponse
+  return movieResponse.data.movie
+}
 const { data: movie, isLoading } = useQuery({
   queryKey: [id],
   queryFn: getMovieDetail,

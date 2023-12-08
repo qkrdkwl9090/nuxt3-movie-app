@@ -1,43 +1,47 @@
-<script setup>
+<script setup lang="ts">
+import { reactive } from 'vue'
 import { useQuery } from '@tanstack/vue-query'
+import { IMoviesResponse, IMovie } from '@/models/movies'
 
-const moviesByGenre = reactive({})
 const requestUri =
   '/v2/list_movies.json?minimum_rating=8.5&sort_by=rating&limit=50'
-const getMovieList = async () =>
-  await useDefaultFetch(requestUri).then((res) => {
-    let genreCounts = {}
+const moviesByGenre = reactive<Record<string, IMovie[]>>({})
 
-    res.data.movies.forEach((movie) => {
-      movie.genres.forEach((genre) => {
-        if (genreCounts[genre]) {
-          genreCounts[genre]++
-        } else {
-          genreCounts[genre] = 1
-        }
-      })
+async function convertMovieData(): Promise<IMovie> {
+  const response = await useDefaultFetch(requestUri)
+  const res: IMoviesResponse = response as IMoviesResponse
+
+  const genreCounts: Record<string, number> = res.data.movies.reduce<
+    Record<string, number>
+  >((acc, movie) => {
+    movie.genres.forEach((genre) => {
+      acc[genre] = (acc[genre] || 0) + 1
     })
+    return acc
+  }, {})
 
-    let popularGenres = Object.keys(genreCounts).filter(
-      (genre) => genreCounts[genre] >= 6,
+  const popularGenres = Object.keys(genreCounts).filter(
+    (genre) => genreCounts[genre] >= 6,
+  )
+
+  popularGenres.forEach((genre) => {
+    moviesByGenre[genre] = res.data.movies.filter((movie) =>
+      movie.genres.includes(genre),
     )
-
-    popularGenres.forEach((genre) => {
-      moviesByGenre[genre] = res.data.movies.filter((movie) =>
-        movie.genres.includes(genre),
-      )
-    })
-    return res.data.movies
   })
 
-const { data: movies, isSuccess } = useQuery({
+  return res.data.movies[0]
+}
+
+const { data: bsetMovie, isSuccess } = useQuery<IMovie>({
   queryKey: [requestUri],
-  queryFn: getMovieList,
+  queryFn: convertMovieData,
 })
 </script>
+
 <template>
   <section>
-    <HomePoster v-if="isSuccess" :movie="movies[0]" />
+    <HomePoster v-if="isSuccess" :movie="bsetMovie" />
     <section class="p-6 xl:p-16">
       <HomeMovieList v-if="isSuccess" :movieList="moviesByGenre" />
       <HomeMovieListEmpty v-else class="mt-8" />
