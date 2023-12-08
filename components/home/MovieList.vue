@@ -35,7 +35,7 @@ const props = defineProps({
           hide: true,
         }"
       >
-        <swiper-slide v-for="movie of movies" :key="movie.id">
+        <swiper-slide v-for="movie of movies" :key="movie.id" id="movie_list">
           <MovieContainer
             :id="movie.id"
             :src="movie.medium_cover_image"

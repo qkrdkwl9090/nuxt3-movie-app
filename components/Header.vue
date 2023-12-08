@@ -46,6 +46,7 @@ const onInput = () => {
     <section class="py-4 flex items-center justify-between px-6 xl:px-8">
       <div class="flex items-center">
         <NuxtLink
+          id="logo"
           class="mr-6 font-bold text-2xl text-red-600 cursor-pointer"
           to="/"
         >
@@ -68,6 +69,7 @@ const onInput = () => {
         </NuxtLink>
 
         <InputText
+          id="search_input"
           type="text"
           v-model="value"
           class="w-full"
@@ -83,7 +85,7 @@ const onInput = () => {
         <h3 class="font-bold text-lg">Result</h3>
         <section class="mt-2">
           <p v-if="!movies?.length">Not found</p>
-          <div v-else class="flex gap-8 flex-wrap">
+          <div v-else id="search_result" class="flex gap-8 flex-wrap">
             <MovieContainer
               @click="() => (visible = false)"
               v-for="movie of movies"
