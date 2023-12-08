@@ -14,9 +14,7 @@ const { movie } = defineProps<{
         {{ movie?.title }}
         <span class="text-gray-500">{{ ` (${movie?.year})` }}</span>
       </h3>
-      <p class="mt-4">
-        {{ movie?.description_full }}
-      </p>
+      <DetailDescription class="mt-4" :description="movie?.description_full" />
       <div class="mt-4 flex gap-2">
         <Tag v-for="genre of movie?.genres" :key="genre" :value="genre" />
       </div>
