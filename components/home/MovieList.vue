@@ -6,7 +6,6 @@ const props = defineProps({
     required: true,
   },
 })
-const movieDetail = useMovieDetail()
 </script>
 <template>
   <section>
@@ -15,7 +14,7 @@ const movieDetail = useMovieDetail()
       :key="genre"
       class="text-white [&+&]:mt-4"
     >
-      <h3 class="text-2xl font-bold">{{ genre }}</h3>
+      <h3 class="text-xl xl:text-2xl font-bold">{{ genre }}</h3>
       <swiper
         class="mt-4"
         slidesPerView="4"
@@ -26,6 +25,9 @@ const movieDetail = useMovieDetail()
           640: {
             slidesPerView: 4,
           },
+          320: {
+            slidesPerView: 2,
+          },
         }"
         spaceBetween="30"
         :modules="[Scrollbar]"
@@ -33,19 +35,12 @@ const movieDetail = useMovieDetail()
           hide: true,
         }"
       >
-        <swiper-slide
-          v-for="movie of movies"
-          :key="movie.id"
-          class="cursor-pointer min-w-[40px] xl:min-w-[9.375rem]"
-        >
-          <button @click="() => movieDetail.show(movie.id)">
-            <img
-              :src="movie.medium_cover_image"
-              alt=""
-              class="rounded-md w-full"
-            />
-            <p class="mt-2 text-left">{{ movie.title }}</p>
-          </button>
+        <swiper-slide v-for="movie of movies" :key="movie.id">
+          <MovieContainer
+            :id="movie.id"
+            :src="movie.medium_cover_image"
+            :title="movie.title"
+          />
         </swiper-slide>
       </swiper>
     </div>

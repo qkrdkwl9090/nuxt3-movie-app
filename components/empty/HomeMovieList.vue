@@ -10,13 +10,7 @@
           height="18.75rem"
           class="hidden xl:block"
         />
-        <Skeleton
-          v-for="i of 4"
-          :key="i"
-          width="14.5rem"
-          height="18.75rem"
-          class="block xl:hidden"
-        />
+        <Skeleton width="100%" height="18.75rem" class="block xl:hidden" />
       </div>
     </div>
   </section>

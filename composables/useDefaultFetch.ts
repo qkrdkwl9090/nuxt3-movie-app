@@ -1,4 +1,4 @@
-export default async function (uri) {
+export default async function (uri: string) {
   const {
     public: { baseUrl },
   } = useRuntimeConfig()
