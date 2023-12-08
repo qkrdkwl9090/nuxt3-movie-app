@@ -85,6 +85,7 @@ const onInput = () => {
           <p v-if="!movies?.length">Not found</p>
           <div v-else class="flex gap-8 flex-wrap">
             <MovieContainer
+              @click="() => (visible = false)"
               v-for="movie of movies"
               :key="movie.id"
               :id="movie.id"
