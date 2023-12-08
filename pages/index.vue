@@ -44,7 +44,7 @@ const { data: bsetMovie, isSuccess } = useQuery<IMovie>({
     <HomePoster v-if="isSuccess" :movie="bsetMovie" />
     <section class="p-6 xl:p-16">
       <HomeMovieList v-if="isSuccess" :movieList="moviesByGenre" />
-      <HomeMovieListEmpty v-else class="mt-8" />
+      <EmptyHomeMovieList v-else class="mt-8" />
     </section>
   </section>
 </template>
