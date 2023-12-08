@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
 import { useQuery } from '@tanstack/vue-query'
 import { IMoviesResponse, IMovie } from '@/models/movies'
 
 const requestUri =
   '/v2/list_movies.json?minimum_rating=8.5&sort_by=rating&limit=50'
-const moviesByGenre = reactive<Record<string, IMovie[]>>({})
 
-async function convertMovieData(): Promise<IMovie> {
+async function convertMovieData(): Promise<{
+  topMovies: IMovie
+  moviesByGenre: Record<string, IMovie[]>
+}> {
+  const moviesByGenre: Record<string, IMovie[]> = {}
   const response = await useDefaultFetch(requestUri)
   const res: IMoviesResponse = response as IMoviesResponse
 
@@ -30,10 +32,16 @@ async function convertMovieData(): Promise<IMovie> {
     )
   })
 
-  return res.data.movies[0]
+  return {
+    topMovies: res.data.movies[0],
+    moviesByGenre,
+  }
 }
 
-const { data: bsetMovie, isSuccess } = useQuery<IMovie>({
+const { data, isSuccess } = useQuery<{
+  topMovies: IMovie
+  moviesByGenre: Record<string, IMovie[]>
+}>({
   queryKey: [requestUri],
   queryFn: convertMovieData,
 })
@@ -41,9 +49,12 @@ const { data: bsetMovie, isSuccess } = useQuery<IMovie>({
 
 <template>
   <section>
-    <HomePoster v-if="isSuccess" :movie="bsetMovie" />
+    <HomePoster v-if="isSuccess && data?.topMovies" :movie="data.topMovies" />
     <section class="p-6 xl:p-16">
-      <HomeMovieList v-if="isSuccess" :movieList="moviesByGenre" />
+      <HomeMovieList
+        v-if="isSuccess && data?.moviesByGenre"
+        :movieList="data.moviesByGenre"
+      />
       <EmptyHomeMovieList v-else class="mt-8" />
     </section>
   </section>
