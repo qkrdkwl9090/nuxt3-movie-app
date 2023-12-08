@@ -84,23 +84,13 @@ const onInput = () => {
         <section class="mt-2">
           <p v-if="!movies?.length">Not found</p>
           <div v-else class="flex gap-8 flex-wrap">
-            <button
+            <MovieContainer
               v-for="movie of movies"
-              class="w-[13.75rem] cursor-pointer"
               :key="movie.id"
-              @click="() => navigateTo(`/${movie.id}`)"
-            >
-              <p
-                class="text-left text-gray-300 mt-2 overflow-x-hidden text-ellipsis break-all whitespace-nowrap"
-              >
-                {{ movie.title }}
-              </p>
-              <img
-                class="rounded-md mt-2"
-                :src="movie.medium_cover_image"
-                :alt="movie.title"
-              />
-            </button>
+              :id="movie.id"
+              :src="movie.medium_cover_image"
+              :title="movie.title"
+            />
           </div>
         </section>
       </div>

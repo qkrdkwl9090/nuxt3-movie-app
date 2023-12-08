@@ -23,7 +23,7 @@ const props = defineProps({
             slidesPerView: 7,
           },
           640: {
-            slidesPerView: 4,
+            slidesPerView: 2,
           },
         }"
         spaceBetween="30"
@@ -32,19 +32,12 @@ const props = defineProps({
           hide: true,
         }"
       >
-        <swiper-slide
-          v-for="movie of movies"
-          :key="movie.id"
-          class="cursor-pointer min-w-[40px] xl:min-w-[9.375rem]"
-        >
-          <NuxtLink :href="`/${movie.id}`">
-            <img
-              :src="movie.medium_cover_image"
-              alt=""
-              class="rounded-md w-full"
-            />
-            <p class="mt-2 text-left">{{ movie.title }}</p>
-          </NuxtLink>
+        <swiper-slide v-for="movie of movies" :key="movie.id">
+          <MovieContainer
+            :id="movie.id"
+            :src="movie.medium_cover_image"
+            :title="movie.title"
+          />
         </swiper-slide>
       </swiper>
     </div>
