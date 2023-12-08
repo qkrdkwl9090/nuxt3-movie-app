@@ -16,7 +16,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <NuxtLink :href="`/${id}`" class="w-[2.5rem] xl:w-[12rem] cursor-pointer">
+  <NuxtLink :href="`/${id}`" class="w-full xl:w-[12rem] cursor-pointer">
     <img :src="src" alt="" class="rounded-md w-full" />
     <p class="mt-2 text-left text-white text-sm xl:text-lg">{{ title }}</p>
   </NuxtLink>

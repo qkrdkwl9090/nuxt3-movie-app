@@ -14,7 +14,7 @@ const props = defineProps({
       :key="genre"
       class="text-white [&+&]:mt-4"
     >
-      <h3 class="text-2xl font-bold">{{ genre }}</h3>
+      <h3 class="text-xl xl:text-2xl font-bold">{{ genre }}</h3>
       <swiper
         class="mt-4"
         slidesPerView="4"
@@ -23,6 +23,9 @@ const props = defineProps({
             slidesPerView: 7,
           },
           640: {
+            slidesPerView: 4,
+          },
+          320: {
             slidesPerView: 2,
           },
         }"

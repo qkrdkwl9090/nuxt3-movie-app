@@ -38,9 +38,9 @@ const { data: movies, isSuccess } = useQuery({
 <template>
   <section>
     <HomePoster v-if="isSuccess" :movie="movies[0]" />
-    <section class="pt-16 pb-16 px-16">
+    <section class="p-6 xl:p-16">
       <HomeMovieList v-if="isSuccess" :movieList="moviesByGenre" />
-      <HomeMovieListEmpty v-else />
+      <HomeMovieListEmpty v-else class="mt-8" />
     </section>
   </section>
 </template>
