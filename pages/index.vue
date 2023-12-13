@@ -53,7 +53,7 @@ const { data, isSuccess } = useQuery<{
     <section class="p-6 xl:p-16">
       <HomeMovieList
         v-if="isSuccess && data?.moviesByGenre"
-        :movieList="data.moviesByGenre"
+        :moviesByGenre="data.moviesByGenre"
       />
       <EmptyHomeMovieList v-else class="mt-8" />
     </section>

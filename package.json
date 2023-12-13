@@ -8,12 +8,14 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "typecheck": "vue-tsc --noEmit",
-    "deploy": "gh-pages -d .output/public -t true"
+    "deploy": "gh-pages -d .output/public -t true",
+    "test": "cypress open"
   },
   "devDependencies": {
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^5.59.5",
     "autoprefixer": "^10.4.14",
+    "cypress": "^13.6.1",
     "eslint": "^8.40.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-nuxt": "^4.0.0",

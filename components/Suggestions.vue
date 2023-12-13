@@ -1,10 +1,15 @@
-<script setup>
+<script setup lang="ts">
 import { useQuery } from '@tanstack/vue-query'
+import { IMovie, IMoviesResponse } from '@/models/movies'
 const { id } = defineProps(['id'])
 const requestUri = `/v2/movie_suggestions.json?movie_id=${id}`
-const getMovieSuggestions = async () =>
-  await useDefaultFetch(requestUri).then(({ data }) => data.movies)
-const { data: movies, isSuccess } = useQuery({
+async function getMovieSuggestions(): Promise<IMovie[]> {
+  const response = await useDefaultFetch(requestUri)
+  const res: IMoviesResponse = response as IMoviesResponse
+
+  return res.data.movies
+}
+const { data: movies, isSuccess } = useQuery<IMovie[]>({
   queryKey: [requestUri],
   queryFn: getMovieSuggestions,
 })

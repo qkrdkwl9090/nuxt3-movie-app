@@ -1,7 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import { useQuery } from '@tanstack/vue-query'
 import Sidebar from 'primevue/sidebar'
 import InputText from 'primevue/inputtext'
+import { IMoviesResponse, IMovie } from '@/models/movies'
 
 const visible = ref(false)
 const value = ref('')
@@ -11,27 +12,28 @@ const scrollEvent = useThrottle(() => {
   currentScroll.value = window.scrollY
 }, 100)
 onMounted(() => {
-  document.addEventListener('scroll', scrollEvent)
+  window.addEventListener('scroll', scrollEvent)
 })
 onBeforeUnmount(() => {
-  container.removeEventListener('scroll', scrollEvent)
+  window.removeEventListener('scroll', scrollEvent)
 })
 
 const requestUri = computed(
   () =>
     `/v2/list_movies.json?query_term=${value.value}&sort_by=rating&limit=20`,
 )
-const getMovieList = async () =>
-  await useDefaultFetch(requestUri.value).then((res) => {
-    return res.data.movies
-  })
+async function getMovieList(): Promise<IMovie[]> {
+  const response = await await useDefaultFetch(requestUri.value)
+  const res: IMoviesResponse = response as IMoviesResponse
 
+  return res.data.movies
+}
 const {
   data: movies,
   isFetching,
   refetch,
-} = useQuery({
-  queryKey: [requestUri],
+} = useQuery<IMovie[]>({
+  queryKey: [requestUri.value],
   queryFn: getMovieList,
 })
 const onInput = () => {
@@ -46,6 +48,7 @@ const onInput = () => {
     <section class="py-4 flex items-center justify-between px-6 xl:px-8">
       <div class="flex items-center">
         <NuxtLink
+          id="logo"
           class="mr-6 font-bold text-2xl text-red-600 cursor-pointer"
           to="/"
         >
@@ -68,6 +71,7 @@ const onInput = () => {
         </NuxtLink>
 
         <InputText
+          id="search_input"
           type="text"
           v-model="value"
           class="w-full"
@@ -83,7 +87,7 @@ const onInput = () => {
         <h3 class="font-bold text-lg">Result</h3>
         <section class="mt-2">
           <p v-if="!movies?.length">Not found</p>
-          <div v-else class="flex gap-8 flex-wrap">
+          <div v-else id="search_result" class="flex gap-8 flex-wrap">
             <MovieContainer
               @click="() => (visible = false)"
               v-for="movie of movies"

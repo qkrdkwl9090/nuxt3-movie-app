@@ -10,7 +10,7 @@ const { movie } = defineProps<{
 <template>
   <div class="flex gap-10">
     <div class="flex-1">
-      <h3 class="font-bold text-lg">
+      <h3 id="movie_title" class="font-bold text-lg">
         {{ movie?.title }}
         <span class="text-gray-500">{{ ` (${movie?.year})` }}</span>
       </h3>
