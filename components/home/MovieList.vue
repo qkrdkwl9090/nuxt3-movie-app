@@ -1,7 +1,7 @@
-<script setup>
+<script setup lang="ts">
 import { Scrollbar } from 'swiper'
 const props = defineProps({
-  movieList: {
+  moviesByGenre: {
     type: Object,
     required: true,
   },
@@ -10,7 +10,7 @@ const props = defineProps({
 <template>
   <section>
     <div
-      v-for="(movies, genre) in movieList"
+      v-for="(movies, genre) in moviesByGenre"
       :key="genre"
       class="text-white [&+&]:mt-4"
     >
