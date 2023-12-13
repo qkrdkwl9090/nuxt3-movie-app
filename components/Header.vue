@@ -11,10 +11,10 @@ const scrollEvent = useThrottle(() => {
   currentScroll.value = window.scrollY
 }, 100)
 onMounted(() => {
-  document.addEventListener('scroll', scrollEvent)
+  window.addEventListener('scroll', scrollEvent)
 })
 onBeforeUnmount(() => {
-  container.removeEventListener('scroll', scrollEvent)
+  window.removeEventListener('scroll', scrollEvent)
 })
 
 const requestUri = computed(
