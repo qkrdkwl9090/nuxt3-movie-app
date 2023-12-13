@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { Scrollbar } from 'swiper'
-const props = defineProps({
-  moviesByGenre: {
-    type: Object,
-    required: true,
-  },
-})
+import { IMovie } from '@/models/movies'
+const { moviesByGenre } = defineProps<{
+  moviesByGenre: Record<string, IMovie[]>
+}>()
 </script>
 <template>
   <section>

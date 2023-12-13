@@ -1,7 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import { useQuery } from '@tanstack/vue-query'
 import Sidebar from 'primevue/sidebar'
 import InputText from 'primevue/inputtext'
+import { IMoviesResponse, IMovie } from '@/models/movies'
 
 const visible = ref(false)
 const value = ref('')
@@ -21,17 +22,18 @@ const requestUri = computed(
   () =>
     `/v2/list_movies.json?query_term=${value.value}&sort_by=rating&limit=20`,
 )
-const getMovieList = async () =>
-  await useDefaultFetch(requestUri.value).then((res) => {
-    return res.data.movies
-  })
+async function getMovieList(): Promise<IMovie[]> {
+  const response = await await useDefaultFetch(requestUri.value)
+  const res: IMoviesResponse = response as IMoviesResponse
 
+  return res.data.movies
+}
 const {
   data: movies,
   isFetching,
   refetch,
-} = useQuery({
-  queryKey: [requestUri],
+} = useQuery<IMovie[]>({
+  queryKey: [requestUri.value],
   queryFn: getMovieList,
 })
 const onInput = () => {
