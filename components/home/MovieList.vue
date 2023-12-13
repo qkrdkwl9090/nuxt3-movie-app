@@ -17,7 +17,7 @@ const props = defineProps({
       <h3 class="text-xl xl:text-2xl font-bold">{{ genre }}</h3>
       <swiper
         class="mt-4"
-        slidesPerView="4"
+        :slidesPerView="4"
         :breakpoints="{
           1024: {
             slidesPerView: 7,
