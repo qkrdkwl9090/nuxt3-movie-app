@@ -27,7 +27,7 @@ describe('Nuxt Movie App spec', () => {
     cy.wait(3000)
     cy.get('#logo').click()
     // url 홈페이지로 돌아왔는지 확인
-    cy.url().should('eq', 'http://localhost:3000/nuxt3_movie_app/')
+    cy.url().should('eq', 'http://localhost:3000/nuxt3-movie-app/')
   })
   // Header의 InputText에 검색어를 입력하고 검색 버튼을 누르면 검색 결과 페이지로 이동한다.
   it('Header의 검색 기능으로 영화 검색이 가능해야한다.', () => {

@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
   app: {
-    baseURL: '/nuxt3_movie_app/',
+    baseURL: '/nuxt3-movie-app/',
   },
   postcss: {
     plugins: {

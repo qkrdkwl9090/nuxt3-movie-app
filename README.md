@@ -6,7 +6,7 @@ Nuxt3, Vue3를 사용하여 개발되었고, 포트폴리오 목적으로 만들
 
 <h3 align="left">Preview:</h3>
 
-![GIFMaker_me (2)](https://github.com/qkrdkwl9090/nuxt3_movie_app/assets/32431645/16f21339-2217-408b-8260-6dac46848e9d)
+![GIFMaker_me (2)](https://github.com/qkrdkwl9090/nuxt3-movie-app/assets/32431645/16f21339-2217-408b-8260-6dac46848e9d)
 
 <h3 align="left">Feature:</h3>
 <ul>

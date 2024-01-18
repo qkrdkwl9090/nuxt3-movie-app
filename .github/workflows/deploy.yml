@@ -2,7 +2,7 @@ name: '[deploy] github page deploy'
 env:
   MY_EMAIL: qkrdkwl9090@naver.com
   MY_NAME: qkrdkwl9090
-  REPO_NAME: nuxt3_movie_app
+  REPO_NAME: nuxt3-movie-app
 on:
   workflow_dispatch:
   push:
