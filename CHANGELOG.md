@@ -1,5 +1,13 @@
 # 🚦 CHANGELOG
 
+## [1.3.1](https://github.com/qkrdkwl9090/nuxt3-movie-app/compare/v1.3.0...v1.3.1) (2024-01-22)
+
+
+### ♻️ Refactor
+
+* **font:** font display swap ([ee9e754](https://github.com/qkrdkwl9090/nuxt3-movie-app/commit/ee9e754f4ef3d36ccb2a30086501060fb5727222))
+* **font:** use dynamic subset ([26e72f2](https://github.com/qkrdkwl9090/nuxt3-movie-app/commit/26e72f270f7935f202036bbf37c9350b44d74f41))
+
 ## [1.3.0](https://github.com/qkrdkwl9090/nuxt3-movie-app/compare/v1.2.2...v1.3.0) (2024-01-18)
 
 
