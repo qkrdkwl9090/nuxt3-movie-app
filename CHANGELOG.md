@@ -1,5 +1,12 @@
 # 🚦 CHANGELOG
 
+## [1.3.2](https://github.com/qkrdkwl9090/nuxt3-movie-app/compare/v1.3.1...v1.3.2) (2024-01-31)
+
+
+### ♻️ Refactor
+
+* rename variable ([7a2e64e](https://github.com/qkrdkwl9090/nuxt3-movie-app/commit/7a2e64e0b7c22d22645dc49c8ae52acf1f3ebd56))
+
 ## [1.3.1](https://github.com/qkrdkwl9090/nuxt3-movie-app/compare/v1.3.0...v1.3.1) (2024-01-22)
 
 
